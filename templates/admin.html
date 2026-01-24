@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}                               <!--ta strona używa szablonu base.html-->
+
+{% block title %}Wszystkie zapisy{% endblock %}         <!--ustawiamy tytuł strony-->
+
+
+{% block content %}                                     <!--tutaj wstawiamy zawartość strony-->
+<h1>Panel admina – lista zapisów</h1>
+
+<a href="{{ url_for('logout') }}">Wyloguj</a>           <!--link do wylogowania się-->
+<hr> 
+
+<table border="1" cellpadding="5">                      <!--tworzymy tabelę, ramki, odstęp w komórkach-->
+    <tr>                                                <!--nagłówki kolumn-->
+        <th>ID</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Liczba osób</th>
+    </tr>                                               <!--koniec wiersza nagłówków-->
+
+    {% for r in registrations %}                        <!--PĘTLA!!Dla każdego zgłoszenia r z listy registrations, zrób to, co jest poniżej-->
+    <tr>
+        <td>{{ r.id }}</td>
+        <td>{{ r.first_name }}</td>
+        <td>{{ r.last_name }}</td>
+        <td>{{ r.email }}</td>
+        <td>{{ r.phone }}</td>
+        <td>{{ r.guests }}</td>
+        <td>
+            <a href="{{ url_for('delete', id=r.id) }}">Usuń</a> <!--link do usunięcia danego zapisu-->
+        </td>
+    </tr>
+    {% endfor %}                                        <!--KONIEC PĘTLI-->
+</table>                                                <!--koniec pętli-->
+
+{% endblock %}                                          <!--koniec zawartości strony-->
+
+
+

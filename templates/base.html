@@ -1,0 +1,23 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">   <!--dołącz plik style.css do każdej strony-->
+
+</head>
+<body>
+
+<h1>DoubleTree by Hilton Warsaw</h1>
+
+<nav>
+    <a href="{{ url_for('about') }}">O nas</a> |
+    <a href="{{ url_for('register') }}">Rejestracja</a> |
+    <a href="{{ url_for('contact') }}">Kontakt</a>
+</nav>
+
+<hr>
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

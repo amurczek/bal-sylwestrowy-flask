@@ -1,0 +1,27 @@
+{% extends "base.html" %}                                                       <!--„ta strona korzysta z układu z base.html”
+(czyli ma menu, nagłówek itd.)-->
+
+{% block title %}Formularz zgłoszeniowy{% endblock %}                           <!--tutaj wstawiamy tytuł strony-->
+
+{% block content %}                                                             <!--tutaj wstawiamy zawartość strony-->
+<h1>Formularz zgłoszeniowy</h1>                                                 <!--nagłówek na stronie-->   
+
+<form method="POST" action="{{ url_for('register') }}">                                                           <!--tworzymy formularz, dane pójdą do pythona-->   
+    <label>Imię:</label><br>                                                    <!--pole na imię-->   
+    <input type="text" name="first_name"><br><br>
+
+    <label>Nazwisko:</label><br>
+    <input type="text" name="last_name"><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email"><br><br>
+
+     <label>Numer telefonu:</label><br>
+    <input type="tel" name="phone"><br><br>
+
+    <label>Liczba osób:</label><br>
+    <input type="number" name="guests"><br><br>
+
+    <button type="submit">Wyślij zgłoszenie</button>
+</form>
+{% endblock %}
