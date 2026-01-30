@@ -9,6 +9,7 @@ Użytkownik może:
 Administrator może:
 - zobaczyć listę zapisanych osób
 - usuwać zgłoszenia
+- potwierdzać rezerwację
 
 Technologie:
 - Python
