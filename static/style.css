@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Playfair Display', sans-serif;
     background-color: #f4f6f8;
     margin: 0;
     padding: 0;
@@ -22,6 +22,8 @@ nav a:hover {
 }
 
 h1, h2 {
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
     color: #003366;
 }
 
@@ -53,4 +55,69 @@ button, input {
 
 a {
     color: #003366;
+}
+
+.about-container {
+    display: flex;              /* ustawia elementy obok siebie */
+    align-items: flex-start;    /* wyrównanie do góry */
+    gap: 20px;                  /* odstęp między obrazem a tekstem */
+}
+
+.about-image {
+    width: auto;               /* szerokość obrazka */
+    border-radius: 10px;        /* zaokrąglone rogi (ładniej) */
+    height: auto;              /* automatyczna wysokość, aby zachować proporcje */
+}
+
+.about-text {
+    max-width: 600px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* lewo / prawo */
+    align-items: center;
+}
+
+.nav-right a {
+    text-decoration: none;
+    margin-right: 10px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.btn-confirm {
+    background-color: #2ecc71;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-confirm:hover {
+    background-color: #27ae60;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+.status-ok {
+    color: green;
+    font-weight: bold;
+}
+
+.status-wait {
+    color: orange;
+    font-weight: bold;
 }

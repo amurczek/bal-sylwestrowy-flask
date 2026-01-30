@@ -1,41 +1,49 @@
+{% extends "base.html" %}
 
-{% extends "base.html" %}                               <!--ta strona używa szablonu base.html-->
+{% block title %}Wszystkie zapisy{% endblock %}
 
-{% block title %}Wszystkie zapisy{% endblock %}         <!--ustawiamy tytuł strony-->
-
-
-{% block content %}                                     <!--tutaj wstawiamy zawartość strony-->
+{% block content %}
 <h1>Panel admina – lista zapisów</h1>
 
-<a href="{{ url_for('logout') }}">Wyloguj</a>           <!--link do wylogowania się-->
-<hr> 
+<hr>
 
-<table border="1" cellpadding="5">                      <!--tworzymy tabelę, ramki, odstęp w komórkach-->
-    <tr>                                                <!--nagłówki kolumn-->
-        <th>ID</th>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Nr</th>
         <th>Imię</th>
         <th>Nazwisko</th>
         <th>Email</th>
         <th>Telefon</th>
         <th>Liczba osób</th>
-    </tr>                                               <!--koniec wiersza nagłówków-->
+        <th>Status</th>
+        <th>Akcja</th>
+    </tr>
 
-    {% for r in registrations %}                        <!--PĘTLA!!Dla każdego zgłoszenia r z listy registrations, zrób to, co jest poniżej-->
+    {% for r in registrations %}
     <tr>
-        <td>{{ r.id }}</td>
+        <td>{{ loop.index }}</td>
         <td>{{ r.first_name }}</td>
         <td>{{ r.last_name }}</td>
         <td>{{ r.email }}</td>
         <td>{{ r.phone }}</td>
         <td>{{ r.guests }}</td>
+
         <td>
-            <a href="{{ url_for('delete', id=r.id) }}">Usuń</a> <!--link do usunięcia danego zapisu-->
+            {% if r.confirmed %}
+                ✔ Potwierdzona
+            {% else %}
+                ⏳ Oczekuje
+            {% endif %}
+        </td>
+
+        <td>
+            {% if not r.confirmed %}
+                <a href="{{ url_for('confirm', id=r.id) }}">Potwierdź</a>
+            {% endif %}
+            <a href="{{ url_for('delete', id=r.id) }}">Usuń</a>
         </td>
     </tr>
-    {% endfor %}                                        <!--KONIEC PĘTLI-->
-</table>                                                <!--koniec pętli-->
+    {% endfor %}
 
-{% endblock %}                                          <!--koniec zawartości strony-->
-
-
-
+</table>
+{% endblock %}

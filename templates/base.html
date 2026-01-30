@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">   <!--dołącz plik style.css do każdej strony-->
 
 </head>
@@ -9,10 +10,18 @@
 
 <h1>DoubleTree by Hilton Warsaw</h1>
 
-<nav>
-    <a href="{{ url_for('about') }}">O nas</a> |
-    <a href="{{ url_for('register') }}">Rejestracja</a> |
-    <a href="{{ url_for('contact') }}">Kontakt</a>
+<nav class="navbar">
+    <div class="nav-left">
+        <a href="{{ url_for('about') }}">O nas</a> |
+        <a href="{{ url_for('register') }}">Rejestracja</a> |
+        <a href="{{ url_for('contact') }}">Kontakt</a>
+    </div>
+
+    <div class="nav-right">
+        {% if session.get("admin") %}
+            <a href="{{ url_for('logout') }}">Wyloguj się</a>
+        {% endif %}
+    </div>
 </nav>
 
 <hr>
